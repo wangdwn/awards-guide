@@ -398,7 +398,7 @@ const TL=[
 document.getElementById("tl").innerHTML=TL.map(([m,e])=>`<div class="tlm ${m==="4月"||m==="5月"||m==="10月"?"hot":""}"><div class="m">${m}</div><div class="e">${e.replace(/\n/g,"<br>")}</div></div>`).join("");
 /* 动态统计 */
 const _cards=[...document.querySelectorAll(".card")];
-const _bylv=lv=>_cards.filter(c=>c.querySelector(".badge").className.includes(lv)).length;
+const _bylv=lv=>_cards.filter(c=>c.querySelector(".badge").className.split(" ").includes(lv)).length;
 document.getElementById("st_total").textContent=_cards.length;
 document.getElementById("st_g").textContent=_bylv("b-g");
 document.getElementById("st_b").textContent=_bylv("b-b");
