@@ -91,12 +91,11 @@ footer a{color:#9fd0d8}
     <h1>地海测 · 科技奖励与职称评审申报指南</h1>
     <div class="sub">面向我院（广州市地质调查院 · 广州市海洋发展促进中心）职能任务的评奖申报实用手册：收录地质、海洋、测绘领域与职称评审相关的国家级、省部级、行业学会奖项 22 个，含评比时间、申报要求、材料清单与评审程序，按院职能分门别类，可作年度申报作战图。</div>
     <div class="statrow">
-      <div class="stat"><b>22</b><span>收录奖项</span></div>
-      <div class="stat"><b>5</b><span>国家级通用</span></div>
-      <div class="stat"><b>2</b><span>省部级</span></div>
-      <div class="stat"><b>10</b><span>行业学会级</span></div>
-      <div class="stat"><b>4</b><span>地质行业荣誉</span></div>
-      <div class="stat"><b>4</b><span>可破格正高</span></div>
+      <div class="stat"><b id="st_total">—</b><span>收录奖项</span></div>
+      <div class="stat"><b id="st_g">—</b><span>国家级通用</span></div>
+      <div class="stat"><b id="st_b">—</b><span>省部级/行业学会</span></div>
+      <div class="stat"><b id="st_y">—</b><span>行业荣誉</span></div>
+      <div class="stat"><b id="st_gy">—</b><span>局级/行业</span></div>
     </div>
   </div>
 </header>
@@ -116,6 +115,9 @@ footer a{color:#9fd0d8}
 </nav>
 
 <main class="wrap">
+
+<div id="count" style="font-size:13px;color:var(--sub);margin:4px 0 12px"></div>
+
 
 <section id="overview">
   <h2 class="sec">全年评奖日历（申报窗口速览）</h2>
@@ -394,6 +396,14 @@ const TL=[
  ["12月","省科技奖提名截止/公示\n年终获奖盘点"]
 ];
 document.getElementById("tl").innerHTML=TL.map(([m,e])=>`<div class="tlm ${m==="4月"||m==="5月"||m==="10月"?"hot":""}"><div class="m">${m}</div><div class="e">${e.replace(/\n/g,"<br>")}</div></div>`).join("");
+/* 动态统计 */
+const _cards=[...document.querySelectorAll(".card")];
+const _bylv=lv=>_cards.filter(c=>c.querySelector(".badge").className.includes(lv)).length;
+document.getElementById("st_total").textContent=_cards.length;
+document.getElementById("st_g").textContent=_bylv("b-g");
+document.getElementById("st_b").textContent=_bylv("b-b");
+document.getElementById("st_y").textContent=_bylv("b-y");
+document.getElementById("st_gy").textContent=_bylv("b-gy");
 </script>
 </body>
 </html>
