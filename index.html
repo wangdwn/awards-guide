@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地海测 · 科技奖励与职称评审申报指南 — 广州市地质调查院（广州市海洋发展促进中心）</title>
+<style>
+:root{
+  --deep:#0b3d5c; --ocean:#0e7c86; --land:#2e7d32; --sand:#d9a441;
+  --bg:#f4f7f9; --card:#ffffff; --line:#e2e8ef; --text:#1c2b36; --sub:#5b6b78;
+  --gold:#b8860b; --red:#c0392b; --blue:#1f5fa8; --green:#1e7e4e; --gray:#6b7a86;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+/* 头部 */
+header{background:linear-gradient(135deg,var(--deep) 0%,var(--ocean) 55%,#145a6b 100%);color:#fff;padding:44px 0 30px}
+header .kicker{font-size:13px;letter-spacing:2px;opacity:.85;text-transform:uppercase}
+header h1{font-size:32px;margin:6px 0 8px;font-weight:800;letter-spacing:1px}
+header .sub{font-size:15px;opacity:.92;max-width:760px}
+.statrow{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:12px 20px;min-width:130px;text-align:center;backdrop-filter:blur(4px)}
+.stat b{display:block;font-size:26px;font-weight:800}
+.stat span{font-size:12px;opacity:.9}
+/* 导航 */
+nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(11,61,92,.06)}
+nav .wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+nav a{color:var(--deep);text-decoration:none;font-size:13.5px;padding:7px 13px;border-radius:8px;font-weight:600;white-space:nowrap}
+nav a:hover,nav a.on{background:var(--deep);color:#fff}
+#q{flex:1;min-width:220px;padding:8px 14px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;outline:none}
+#q:focus{border-color:var(--ocean)}
+/* 主体 */
+main{padding:26px 0 60px}
+h2.sec{font-size:22px;font-weight:800;color:var(--deep);margin:38px 0 6px;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:6px;height:22px;background:var(--ocean);border-radius:3px;display:inline-block}
+p.secnote{color:var(--sub);font-size:14px;margin-bottom:16px}
+/* 时间轴 */
+.tl{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.tlm{flex:1;min-width:74px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;text-align:center}
+.tlm .m{font-weight:800;color:var(--deep);font-size:14px}
+.tlm .e{font-size:11px;color:var(--sub);line-height:1.4;margin-top:2px}
+.tlm.hot{border-color:var(--sand);background:#fffaf0}
+.tlm.hot .m{color:var(--gold)}
+/* 奖项卡片 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.15s;cursor:pointer}
+.card:hover{box-shadow:0 6px 20px rgba(11,61,92,.12);transform:translateY(-2px);border-color:var(--ocean)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.card h3{font-size:16.5px;font-weight:800;color:var(--deep);line-height:1.4}
+.badge{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.b-g{background:#fdeaea;color:var(--red)} .b-b{background:#e8f0fb;color:var(--blue)}
+.b-gr{background:#e6f4ec;color:var(--green)} .b-y{background:#fdf3e0;color:var(--gold)} .b-gy{background:#eef1f4;color:var(--gray)}
+.meta{font-size:12.5px;color:var(--sub);margin:8px 0 4px;line-height:1.8}
+.meta b{color:var(--text)}
+.detail{display:none;border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;font-size:13.5px}
+.detail.open{display:block}
+.detail .row{margin-bottom:8px}
+.detail .k{font-weight:700;color:var(--ocean);margin-right:6px}
+.detail .k::before{content:"▸ "}
+.detail ul{padding-left:20px;margin-top:2px}
+.detail li{margin-bottom:3px}
+.tag{display:inline-block;font-size:11px;background:#eef4f8;color:var(--deep);border-radius:5px;padding:1px 7px;margin:2px 3px 2px 0}
+.none{display:none}
+/* 速查表 */
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;font-size:13.5px;margin:10px 0}
+th{background:var(--deep);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#f8fafc}
+/* 策略 */
+.tip{background:var(--card);border-left:4px solid var(--sand);border-radius:10px;padding:14px 18px;margin:10px 0;font-size:14px}
+.tip b{color:var(--gold)}
+.tip ol{padding-left:20px;margin-top:6px}
+.tip li{margin-bottom:5px}
+/* 页脚 */
+footer{background:var(--deep);color:#cfdde6;padding:24px 0 34px;font-size:12.5px;line-height:1.9}
+footer a{color:#9fd0d8}
+.cathead{display:flex;align-items:center;gap:10px;margin:30px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.cathead .ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;font-weight:800}
+.cathead h2{font-size:19px;color:var(--deep);font-weight:800}
+.cathead p{font-size:12.5px;color:var(--sub)}
+#count{font-size:13px;color:var(--sub);margin:4px 0 12px}
+@media(max-width:720px){header h1{font-size:24px}.grid{grid-template-columns:1fr}.stat{min-width:100px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Geo-Ocean Awards Guide · 2026 版</div>
+    <h1>地海测 · 科技奖励与职称评审申报指南</h1>
+    <div class="sub">面向我院（广州市地质调查院 · 广州市海洋发展促进中心）职能任务的评奖申报实用手册：收录地质、海洋、测绘领域与职称评审相关的国家级、省部级、行业学会奖项，含评比时间、申报要求、材料清单与评审程序，按院职能分门别类，可作年度申报作战图。</div>
+    <div class="statrow">
+      <div class="stat"><b>24</b><span>收录奖项</span></div>
+      <div class="stat"><b>5</b><span>国家级通用</span></div>
+      <div class="stat"><b>3</b><span>省部级</span></div>
+      <div class="stat"><b>10</b><span>行业学会级</span></div>
+      <div class="stat"><b>6</b><span>地质行业荣誉</span></div>
+      <div class="stat"><b>4</b><span>可破格正高</span></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#overview">年度日历</a>
+    <a href="#cat1">综合科技</a>
+    <a href="#cat2">城市地质</a>
+    <a href="#cat3">海洋业务</a>
+    <a href="#cat4">测绘遥感</a>
+    <a href="#cat5">人才荣誉</a>
+    <a href="#table">职称速查</a>
+    <a href="#strategy">申报策略</a>
+    <input id="q" type="search" placeholder="🔍 搜索奖项 / 主办方 / 关键词…">
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="overview">
+  <h2 class="sec">全年评奖日历（申报窗口速览）</h2>
+  <p class="secnote">基于 2023—2026 年各奖项通知统计的典型窗口，每年以官方正式通知为准。🔸=本院重点申报窗口。</p>
+  <div class="tl" id="tl"></div>
+</section>
+
+<section id="cats">
+
+<div class="cathead" id="cat1"><div class="ico" style="background:var(--blue)">综</div><div><h2>一、综合科技奖（全院通用 · 职称硬通货主力）</h2><p>国家级与自然资源系统奖项，不分专业方向，各科室成果均可申报，是高级职称评审的核心业绩来源。</p></div></div>
+<div class="grid" id="g1"></div>
+
+<div class="cathead" id="cat2"><div class="ico" style="background:var(--land)">地</div><div><h2>二、城市地质与地质安全类（对应地质调查、地灾防治、城市地质业务）</h2><p>地质行业传统权威奖项，业内认可度高；个人荣誉类奖项是职称评审的重要亮点。</p></div></div>
+<div class="grid" id="g2"></div>
+
+<div class="cathead" id="cat3"><div class="ico" style="background:var(--ocean)">海</div><div><h2>三、海洋调查监测与海洋发展类（对应海洋调查、海洋生态、海洋经济业务）</h2><p>海洋领域行业奖项，海洋专业职称评审的核心业绩来源，多被省级职称文件明文认可。</p></div></div>
+<div class="grid" id="g3"></div>
+
+<div class="cathead" id="cat4"><div class="ico" style="background:#7b5ea7">测</div><div><h2>四、测绘地理信息与遥感类（对应测绘、遥感、地理信息、导航定位业务）</h2><p>测绘行业学会奖项，广东省职称文件明文列名的"行业工程技术奖"，金奖相当于一等奖。</p></div></div>
+<div class="grid" id="g4"></div>
+
+<div class="cathead" id="cat5"><div class="ico" style="background:var(--sand)">才</div><div><h2>五、个人人才荣誉类（个人申报 · 高层次人才标志）</h2><p>面向个人的国家级人才荣誉，获得者多可破格申报正高级职称或享受相应待遇。</p></div></div>
+<div class="grid" id="g5"></div>
+
+</section>
+
+<section id="table">
+  <h2 class="sec">职称评审"硬通货"速查表</h2>
+  <p class="secnote">依据《广东省自然资源工程技术人才职称评价标准条件》（粤人社规〔2025〕41号）及通行评审规则整理；获奖均以奖励证书为准，注意排名要求。</p>
+  <table>
+    <tr><th style="width:22%">奖项层级</th><th style="width:44%">代表奖项</th><th>职称认定价值与排名要求</th></tr>
+    <tr><td><b>国家级科学技术奖</b></td><td>国家自然科学奖、国家技术发明奖、国家科学技术进步奖（三大奖）</td><td>完成人即可破格申报正高级工程师（广东文件明文）；获三大奖是职称评审最高业绩</td></tr>
+    <tr><td><b>国家级专利奖</b></td><td>中国专利金奖 / 银奖 / 优秀奖</td><td>金奖完成人（排名前三）可破格正高；银奖第一完成人可破格高工；优秀奖为高工业绩</td></tr>
+    <tr><td><b>高层次人才称号</b></td><td>享受政府特殊津贴专家、全国创新争先奖等国家批准称号</td><td>国家或省批准的高层次人才称号可破格申报正高</td></tr>
+    <tr><td><b>省（部）级科学技术奖</b></td><td>广东省科学技术奖、自然资源科学技术奖</td><td>正高：二等奖以上完成人（排名前三）或一等奖（排名前五）；高工：省部级奖完成人</td></tr>
+    <tr><td><b>省（部）级行业工程技术奖</b></td><td>优秀测绘工程奖、裴秀奖、地理信息科技进步奖、地理信息产业优秀工程、卫星导航定位科学技术奖、海洋工程科学技术奖、金粤自然资源科学技术奖等</td><td>广东文件明文列名；金奖=一等奖、银奖=二等奖、铜奖=三等奖；正高需二等奖以上排名前三</td></tr>
+    <tr><td><b>市（厅）级奖</b></td><td>市科技进步奖、市行业工程奖</td><td>高工：市厅级二等奖以上完成人（排名前八）；正高：一等奖完成人（排名前三）</td></tr>
+  </table>
+  <div class="tip"><b>排名是命门：</b>同一获奖项目只算一次；正高级通常要求省部级奖"排名前三"，高工要求"完成人（排名前八）"。申报时团队内提前协商排名，第一/前三完成人价值最高。</div>
+</section>
+
+<section id="strategy">
+  <h2 class="sec">本院申报策略建议</h2>
+  <div class="tip"><b>① 主线打法（每年必跟）：</b>自然资源科学技术奖（4月）＋ 广东省科学技术奖（10-12月）＋ 海洋/测绘行业奖（5-6月），构成全年申报主轴，成果成熟一项推一项。</div>
+  <div class="tip"><b>② 成果储备前置：</b>各奖普遍要求成果"已完成并结题/验收"且多数需<b>第三方科技成果评价</b>（鉴定）——提前一年安排项目验收与成果评价，避免当年无米下锅。海洋科学技术奖明确要求报奖前做好第三方评价。</div>
+  <div class="tip"><b>③ 个人荣誉线：</b>40岁以下骨干冲"青年地质科技奖（金锤/银锤）"与"自然资源青年科技奖"；45岁以下冲"黄汲清奖""中国青年科技奖"；资深专家冲"李四光地质科学奖""政府特殊津贴"——个人奖与项目奖错年申报，每年都有抓手。</div>
+  <div class="tip"><b>④ 职称联动：</b>申报正高前 2-3 年集中产出：省部级奖排名前三 1 项（或行业金奖）＋ 发明专利第一发明人 2 项 ＋ 核心期刊论文 2 篇，组合达破格线。</div>
+  <div class="tip"><b>⑤ 资格门槛自查：</b>测绘类奖要求项目承担单位持有《测绘资质证书》；海洋工程科学技术奖要求前三个完成单位为中国海洋工程咨询协会会员单位——<b>先查资质与会员资格</b>再投入申报。</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>数据来源与免责声明</b><br>
+    本指南依据各奖项 2023—2026 年度官方通知、奖励办法及《广东省自然资源工程技术人才职称评价标准条件》（粤人社规〔2025〕41号）等公开文件整理，仅供院内申报参考。各奖项申报时间、条件、名额逐年调整，<b>一律以当年主办单位正式通知为准</b>。主要官方渠道：自然资源部（mnr.gov.cn）、中国测绘学会（csgpc.org）、中国海洋学会（cso.org.cn）、中国海洋工程咨询协会（caoe.org.cn）、中国地理信息产业协会（cagis.org.cn）、中国卫星导航定位协会（glac.org.cn）、中国地质学会（geosociety.org.cn）、国家科学技术奖励工作办公室（nosta.gov.cn）、广东省科技厅（gdstc.gd.gov.cn）。
+    <br>编制：秦叔（老麦）· 2026-09-02 · 广州市地质调查院（广州市海洋发展促进中心）
+  </div>
+</footer>
+
+<script>
+/* ============ 奖项数据库 ============ */
+const D={
+g:[
+ {n:"国家科学技术奖（三大奖）",lv:"国家级",lvC:"b-g",host:"国务院（国家科学技术奖励工作办公室）",cycle:"每年一届",
+  when:"提名通知一般年初/年中下发（如2025年度提名通知2025年5月，国科奖字〔2025〕4号）；提名窗口约1-2个月；年中评审公示；11-12月颁奖。",
+  cond:"提名制（单位或院士专家提名，不接受自荐）；项目须已完成并经评价/验收，应用满一定年限；同一人同年度限报1项。",
+  mat:"提名书（主件）＋附件（科技评价证明、应用证明、知识产权证明、论文引证等），在线填报后打印盖章。",
+  proc:"提名 → 形式审查 → 网络评审 → 会议评审 → 评审委员会评审 → 奖励委员会审定 → 报国务院批准 → 颁奖。",
+  worth:"国家级科技奖完成人＝正高破格硬通货（广东文件明文）；全行业通用，含金量最高。",
+  url:"nosta.gov.cn"},
+ {n:"中国专利奖",lv:"国家级",lvC:"b-g",host:"国家知识产权局 + 世界知识产权组织（WIPO）",cycle:"一年一届（2009年起由两年一届改为一年一届）",
+  when:"每年初发通知（第二十五届通知2024年1月），申报期约2-3个月。",
+  cond:"评奖当年6月1日前已授权的发明专利/实用新型/外观设计；已实施并产生显著经济或社会效益；曾获中国专利奖的不再参评。",
+  mat:"申报书＋专利证书＋项目实施与效益证明材料（审计/销售/许可合同等）。",
+  proc:"推荐（省知识产权局/行业组织/院士/专家）→ 初审 → 专业评审 → 公示 → 国家知识产权局与WIPO审定颁奖。",
+  worth:"金奖完成人（排名前三）可破格正高；银奖（排名第一）可破格高工；优秀奖为高工/正高业绩。",
+  url:"cnipa.gov.cn"},
+ {n:"广东省科学技术奖",lv:"省部级",lvC:"b-b",host:"广东省人民政府（省科技厅组织评审）",cycle:"每年一届",
+  when:"约10-12月发布提名通知并受理（2025年度：粤科函区字〔2025〕1942号，12月完成公示）；次年5月公示拟奖；年中颁奖。",
+  cond:"提名制；设突出贡献奖、自然科学奖、技术发明奖、科技进步奖、青年科技创新奖、科技成果推广奖六类；成果须完成评价/验收。",
+  mat:"提名书（在线系统填报）＋技术评价证明＋应用证明等。",
+  proc:"提名（单位/专家）→ 形式审查 → 专业组评审 → 评审委员会评审 → 拟奖公示 → 省政府批准颁奖。",
+  worth:"省部级奖——正高：二等奖以上排名前三或一等奖排名前五；高工：省部级奖完成人即核心业绩。",
+  url:"gdstc.gd.gov.cn"},
+ {n:"自然资源科学技术奖",lv:"省部级（部级）",lvC:"b-b",host:"自然资源部（奖励委员会办公室＋土地/地质/地矿经济/海洋/太平洋/测绘/自然资源等8家学会联办）",cycle:"每年一届",
+  when:"每年3-4月发推荐通知（2024年度：自然奖字〔2025〕1号），申报系统4月1日-4月30日开放；10-12月公示公告。",
+  cond:"下设自然资源科技进步奖（含找矿奖）、自然资源青年科技奖两类；成果须在指定日期前完成综合技术评价（鉴定/评审/验收）并完成科技成果登记；同一人同年度只能作为一项成果完成人；推荐制（学会/省厅/部直属单位，有名额限制，如省级学会推荐成果5项、青年3人）。",
+  mat:"推荐书（自然资源部申报系统在线填报、导出盖章签字后扫描上传）＋单位公示5个工作日无异议＋科技成果登记证明。不接受纸质申报。",
+  proc:"单位公示 → 系统申报 → 省级部门/学会推荐 → 奖励办会同8学会组织评审 → 评审结果公示 → 奖励委员会审定 → 部公告。",
+  worth:"自然资源领域最高奖，地、海、测三领域全覆盖；部级奖为高工/正高核心业绩。",
+  url:"jlps.mnr.gov.cn（申报系统）"},
+ {n:"中国地质调查局地质科技奖",lv:"局级（部直属局）",lvC:"b-gy",host:"中国地质调查局",cycle:"每年一届（以局通知为准）",
+  when:"约年中发布申报通知，年底评审；具体窗口以中国地质调查局当年通知为准。",
+  cond:"地调局系统及合作单位承担的调查研究成果；完成验收/评价。",
+  mat:"申报书＋成果报告＋评价/验收证明。",
+  proc:"单位申报 → 局属单位/大区中心推荐 → 局科学技术委员会评审 → 公示 → 局审定。",
+  worth:"地调局体系内认可度高；在地质调查业务线职称评审中分量重。",
+  url:"cgs.gov.cn"},
+ {n:"金粤自然资源科学技术奖",lv:"省级行业",lvC:"b-y",host:"广东省自然资源系统（省土地学会等组织）",cycle:"每年一届",
+  when:"以广东省自然资源厅/学会当年通知为准（广东省职称文件2025版已将其列入行业工程技术奖）。",
+  cond:"广东省自然资源领域科技成果；完成评价/验收。",
+  mat:"申报书＋成果证明。",
+  proc:"申报 → 形式审查 → 评审 → 公示 → 颁奖。",
+  worth:"广东职称文件明文列名；金奖≈一等奖、银奖≈二等奖、铜奖≈三等奖。",
+  url:"nr.gd.gov.cn"}
+],
+d:[
+ {n:"李四光地质科学奖",lv:"行业最高荣誉",lvC:"b-y",host:"李四光地质科学奖委员会（中国地质学会）",cycle:"每两年一届（第十八次2023年、第十九次2025年）",
+  when:"评奖年4-5月发申报通知（2023年通知5月、2025年4月启动推荐），年中评审，年底/次年初颁奖。",
+  cond:"长期从事地质工作、学风正派、贡献突出的地质科技工作者；分地质科技研究者奖、野外地质工作者奖、地质教师奖三类；由单位提名、主管部门审核上报。",
+  mat:"申请书（本人第一人称填写）＋代表性成果及获奖证明复印件＋单位意见。",
+  proc:"个人申请 → 单位提名 → 主管部门审核上报 → 委员会评审（含答辩）→ 公示 → 颁奖。",
+  worth:"地质界最高荣誉之一，业内声誉极高；资深专家"硬通货"，获评者在职称评审与人才遴选中分量极重。",
+  url:"geosociety.org.cn"},
+ {n:"青年地质科技奖（金锤奖/银锤奖）",lv:"行业青年最高荣誉",lvC:"b-y",host:"中国地质学会",cycle:"每两年一届（1989年设立；第十八届2022年：金锤10名、银锤40名）",
+  when:"逢评奖年（偶数年）约3-5月申报，10-11月公布（第十八届2022年10月公布）。",
+  cond:"40周岁（含）以下的中国地质学会会员；在地质科技活动中成绩突出。",
+  mat:"推荐表＋成果材料＋单位/学会推荐。",
+  proc:"申报 → 省级学会/分支机构推荐 → 学会评审 → 公示 → 颁奖。",
+  worth:"中国地质界青年最高荣誉；青年骨干职称晋升与人才计划的显著亮点。",
+  url:"geosociety.org.cn"},
+ {n:"黄汲清青年地质科学技术奖",lv:"行业",lvC:"b-y",host:"中国地质学会",cycle:"每两年一届（2002年首届，2024年第十一届）",
+  when:"逢评奖年申报（以学会通知为准）。",
+  cond:"45岁以下青年地质科技工作者；分野外地质工作者奖、地质科技研究者奖、教师奖三类。",
+  mat:"推荐书＋成果证明。",
+  proc:"申报 → 推荐 → 评审 → 公示 → 颁奖。",
+  worth:"青年地质人才重要荣誉；与金锤/银锤错年申报可形成连续荣誉线。",
+  url:"geosociety.org.cn"},
+ {n:"中国地质学会优秀女地质科技工作者奖",lv:"行业",lvC:"b-y",host:"中国地质学会",cycle:"每两年一届",
+  when:"逢评奖年申报（以学会通知为准）。",
+  cond:"在地质科技工作中成绩突出的女性地质科技工作者。",
+  mat:"推荐表＋成果材料。",
+  proc:"申报 → 推荐 → 评审 → 公示 → 颁奖。",
+  worth:"女性地质人才专属荣誉；职称评审与人才举荐亮点。",
+  url:"geosociety.org.cn"}
+],
+h:[
+ {n:"海洋科学技术奖",lv:"行业（海洋界最高）",lvC:"b-b",host:"中国海洋学会＋中国太平洋学会＋中国海洋湖沼学会",cycle:"每年一届",
+  when:"第一季度（1-3月）组织申报指导会并启动准备；第二季度（4-6月）正式启动申报；下半年评审，年底/次年初颁奖。",
+  cond:"海洋科学技术创新成果（基础研究、技术开发、技术应用、软科学均可）；报奖前须完成有资质的第三方评价（鉴定）；成果须已实施应用。",
+  mat:"申报书＋第三方科技成果评价证书＋应用证明＋知识产权证明。",
+  proc:"申报（学会系统）→ 形式审查 → 专业组评审 → 奖励委员会审定 → 公示 → 颁奖（设特等/一/二/三等奖）。",
+  worth:"海洋专业职称评审核心业绩；海洋业务线高工/正高首选奖项。",
+  url:"cso.org.cn"},
+ {n:"海洋工程科学技术奖",lv:"行业",lvC:"b-b",host:"中国海洋工程咨询协会",cycle:"每年一届",
+  when:"4-5月发通知；系统申报5月1日-6月30日；纸质材料7月初截止；下半年评审颁奖（2023-2026年窗口稳定）。",
+  cond:"符合奖励范围；项目完成时间在上年度6月30日之前；多完成单位时前三个完成单位须为协会会员单位；需提供单位间合作关系说明（合作经历、时间、方式、产出佐证）。",
+  mat:"申报书＋项目完成证明＋第三方评价＋合作关系说明＋应用效益证明。",
+  proc:"系统申报 → 形式审查 → 专业评审 → 评审委员会审议 → 公示 → 颁奖。",
+  worth:"广东省职称文件明文列名"行业工程技术奖"；海洋工程类高工/正高核心业绩。",
+  url:"caoe.org.cn"},
+ {n:"海洋创新成果奖",lv:"行业（原国家海洋局设）",lvC:"b-gy",host:"原国家海洋局设立（机构改革后由相关部门承接）",cycle:"每年一届",
+  when:"以现主管部门当年通知为准。",
+  cond:"海洋科学、海洋技术开发、海洋管理、海洋环保、海洋权益等领域的创新成果。",
+  mat:"申报书＋成果证明。",
+  proc:"申报 → 评审 → 公示 → 颁奖。",
+  worth:"海洋管理类成果适用；历史认可度高。",
+  url:"（以主管部门通知为准）"},
+ {n:"中国航海学会科学技术奖",lv:"行业",lvC:"b-gy",host:"中国航海学会（国家科技部批准设立）",cycle:"每年一届",
+  when:"以学会当年通知为准（一般年中申报，年底评审）。",
+  cond:"航海、海事、港口、航道、海洋工程等领域科技成果。",
+  mat:"申报书＋评价/验收证明。",
+  proc:"申报 → 评审 → 公示 → 颁奖（分一/二/三等奖）。",
+  worth:"涉海工程、港口航道业务线适用。",
+  url:"cinnet.cn"},
+ {n:"中国水产学会范蠡科学技术奖",lv:"行业",lvC:"b-gy",host:"中国水产学会（国家科技部批准）",cycle:"每两年一届（第六届2022年、第七届2025年）",
+  when:"逢评奖年申报（以学会通知为准）。",
+  cond:"水产科技进步、技术推广、科普作品、青年创新四类；面向全国水产行业。",
+  mat:"申报书＋成果证明。",
+  proc:"申报 → 专家评审 → 公示 → 奖励委员会审定 → 颁奖。",
+  worth:"海洋渔业、生态养殖业务线适用。",
+  url:"csfish.org.cn"}
+],
+c:[
+ {n:"优秀测绘工程奖",lv:"行业（国家科技奖励办批准）",lvC:"b-b",host:"中国测绘学会",cycle:"每年一届",
+  when:"4-6月申报（2026年通知：测学发〔2026〕6号，6月发布）；7-8月评审公示（2025年公示214项：金52/银66/铜96；2026年公示199项：金52/银57/铜90）；年底颁奖。",
+  cond:"工程技术先进、质量优良、效益显著的测绘地理信息工程；项目承担单位须持《测绘资质证书》。",
+  mat:"申报书＋工程验收证明＋质检报告＋应用效益证明。",
+  proc:"单位申报 → 省级测绘学会/分支机构推荐 → 学会评审委员会评审 → 公示（5个工作日）→ 批准颁奖。",
+  worth:"广东职称文件明文列名；金奖≈一等奖、银奖≈二等奖、铜奖≈三等奖；测绘线高工/正高核心业绩。",
+  url:"csgpc.org"},
+ {n:"优秀地图作品裴秀奖",lv:"行业（国家科技奖励办批准）",lvC:"b-b",host:"中国测绘学会",cycle:"每年一届",
+  when:"与优秀测绘工程奖同期（4-6月申报，7-8月评审公示；2026年：金11/银13/铜18）。",
+  cond:"公开出版或内部出版的地图作品（含电子地图、地图集）；制图质量高、有创新。",
+  mat:"申报书＋地图作品实物/电子版＋审图证明。",
+  proc:"申报 → 推荐 → 评审 → 公示 → 颁奖。",
+  worth:"广东职称文件明文列名；地图制图、GIS成果适用。",
+  url:"csgpc.org"},
+ {n:"地理信息科学技术奖（科技进步奖＋产业优秀工程）",lv:"行业（国家科技奖励办批准）",lvC:"b-b",host:"中国地理信息产业协会",cycle:"每年一届",
+  when:"1-3月发通知申报（2025年通知：中地信协〔2025〕3号，1月17日；2024年度通知2023年12月；2026年3月启动）；下半年评审公示。",
+  cond:"申报单位须为中国法人单位；成果完成并应用；下设地理信息科技进步奖、地理信息产业优秀工程两个子项。",
+  mat:"申报书（在线填报）＋技术评价证明＋应用证明。",
+  proc:"申报 → 形式审查 → 专家评审 → 公示 → 颁奖。",
+  worth:"广东职称文件明文列名；GIS、遥感应用、信息化项目核心业绩。",
+  url:"cagis.org.cn"},
+ {n:"卫星导航定位科学技术奖",lv:"行业（国科奖社证字第0212号）",lvC:"b-b",host:"中国卫星导航定位协会",cycle:"每年一届（2010年起）",
+  when:"1月发通知（2025年通知1月20日、2026年通知1月25日），2-3月申报截止；下半年评审。",
+  cond:"项目须在申报前一年12月31日前结题完成并有相关证明；申报科技进步奖须通过第三方评价；下设科技进步奖、创新应用奖。",
+  mat:"申报书＋结题证明＋第三方评价＋应用证明。",
+  proc:"申报 → 形式审查 → 评审 → 公示 → 颁奖。",
+  worth:"广东职称文件明文列名；北斗应用、导航定位、CORS站点建设等业务适用。",
+  url:"glac.org.cn"}
+],
+r:[
+ {n:"全国创新争先奖",lv:"国家级",lvC:"b-g",host:"人力资源社会保障部＋中国科协＋科技部＋国务院国资委",cycle:"每三年一届（2017年首届，2020、2023年各一届）",
+  when:"逢评奖年（每三年）约4-6月提名，年内颁奖。",
+  cond:"在基础研究和前沿探索、重大装备和工程攻关、成果转化和创新创业、社会服务等领域作出突出贡献的科技工作者；设奖章、奖状两个层级。",
+  mat:"提名书＋成果与贡献证明材料。",
+  proc:"单位提名/专家提名 → 评审 → 公示 → 表彰。",
+  worth:"国家级科技人才大奖，仅次于国家最高科技奖；获评者属高层次人才，正高破格、人才计划评选中分量极重。",
+  url:"cast.org.cn"},
+ {n:"中国青年科技奖",lv:"国家级",lvC:"b-g",host:"中央组织部＋人力资源社会保障部＋中国科协＋共青团中央",cycle:"每两年一届（第十八届2023-2024年）",
+  when:"逢评奖年（偶数年）约10-12月发提名通知，次年评审公布（第十八届：科协发组字〔2023〕54号，2024年1月转发提名）。",
+  cond:"45周岁以下（以当年通知为准）优秀青年科技工作者；在自然科学、工程技术领域取得突出成果。",
+  mat:"提名书＋代表性成果材料。",
+  proc:"单位/学会提名（有名额限制）→ 评审 → 公示 → 表彰。",
+  worth:"国家级青年人才最高荣誉之一；青年骨干正高破格与人才计划亮点。",
+  url:"cast.org.cn"},
+ {n:"享受政府特殊津贴专家",lv:"国家级（国务院批准）",lvC:"b-g",host:"国务院（人力资源社会保障部组织选拔）",cycle:"每两年选拔一次",
+  when:"逢选拔年（奇数年）约3-5月申报，年底/次年初公布（以人社部通知为准）。",
+  cond:"在专业技术和高技能工作中作出突出贡献、业绩显著的中青年专家；单位推荐、逐级审核。",
+  mat:"申报表＋业绩成果证明。",
+  proc:"单位申报 → 主管部门/地市审核 → 省人社厅复核上报 → 人社部评审 → 国务院批准。",
+  worth:"广东职称文件明文："国家或省批准的高层次人才称号"可破格申报正高；获评者同时享受津贴待遇。",
+  url:"mohrss.gov.cn"}
+]
+};
+/* ============ 渲染 ============ */
+const CATS=[["g1","g"],["g2","d"],["g3","h"],["g4","c"],["g5","r"]];
+const LVNAME={g:"国家级",b:"省部级",gr:"省级行业",y:"行业荣誉",gy:"局级/行业"};
+function cardHTML(o){
+ return `<div class="card" data-k="${(o.n+o.host+o.worth+o.cond).toLowerCase()}">
+  <div class="top"><h3>${o.n}</h3><span class="badge ${o.lvC}">${o.lv}</span></div>
+  <div class="meta"><b>主办：</b>${o.host}<br><b>周期：</b>${o.cycle}</div>
+  <div class="tag">⏰ ${o.when.split("；")[0].slice(0,26)}…</div>
+  <div class="detail">
+    <div class="row"><span class="k">评奖周期</span>${o.cycle}</div>
+    <div class="row"><span class="k">申报时间</span>${o.when}</div>
+    <div class="row"><span class="k">申报条件</span>${o.cond}</div>
+    <div class="row"><span class="k">申报材料</span>${o.mat}</div>
+    <div class="row"><span class="k">评审程序</span>${o.proc}</div>
+    <div class="row"><span class="k">职称价值</span>${o.worth}</div>
+    <div class="row"><span class="k">官网/系统</span>${o.url}</div>
+  </div></div>`;
+}
+CATS.forEach(([id,key])=>{document.getElementById(id).innerHTML=D[key].map(cardHTML).join("");});
+/* 折叠 */
+document.querySelectorAll(".card").forEach(c=>{
+ c.querySelector("h3").addEventListener("click",()=>c.querySelector(".detail").classList.toggle("open"));
+ c.querySelector("h3").style.cursor="pointer";
+});
+/* 搜索 */
+const q=document.getElementById("q");
+q.addEventListener("input",()=>{
+ const s=q.value.trim().toLowerCase();
+ document.querySelectorAll(".card").forEach(c=>{
+  c.style.display=(!s||c.dataset.k.includes(s))?"":"none";
+ });
+ const vis=[...document.querySelectorAll(".card")].filter(c=>c.style.display!=="none").length;
+ document.getElementById("count").textContent=s?`匹配 ${vis} 个奖项`:"";
+});
+/* 时间轴 */
+const TL=[
+ ["1月","卫星导航定位奖申报\n地理信息奖申报\n中国专利奖通知"],
+ ["2月","地理信息奖申报续\n青年科技奖提名(评奖年)"],
+ ["3月","自然资源科技奖通知\n海洋科技奖申报指导会\n测绘学会申报培训班"],
+ ["4月","自然资源科技奖申报(1-30日)\n海洋工程奖通知\n李四光奖申报(评奖年)\n海洋科技奖启动"],
+ ["5月","海洋工程奖申报(1日起)\n国家科技奖提名(当年)\n省科技奖拟奖公示(上年)"],
+ ["6月","优秀测绘工程奖申报\n海洋工程奖申报截止(30日)\n专利授权时点(6月1日)"],
+ ["7月","测绘奖评审公示\n海洋工程奖纸质截止"],
+ ["8月","测绘奖结果公示\n评审高峰"],
+ ["9月","获奖公告季\n省科技奖提名启动"],
+ ["10月","自然资源科技奖公告\n省科技奖提名申报\n青年地质科技奖公布(评奖年)"],
+ ["11月","国家科技奖颁奖\n省科技奖提名续"],
+ ["12月","省科技奖提名截止/公示\n年终获奖盘点"]
+];
+document.getElementById("tl").innerHTML=TL.map(([m,e])=>`<div class="tlm ${m==="4月"||m==="5月"||m==="10月"?"hot":""}"><div class="m">${m}</div><div class="e">${e.replace(/\n/g,"<br>")}</div></div>`).join("");
+</script>
+</body>
+</html>
