@@ -90,6 +90,7 @@ footer a{color:#9fd0d8}
 .cathead h2{font-size:19px;color:var(--deep);font-weight:800}
 .cathead p{font-size:12.5px;color:var(--sub)}
 #count{font-size:13px;color:var(--sub);margin:4px 0 12px}
+#count:not(:empty){position:sticky;top:52px;z-index:40;background:#fff8e6;border:1px solid var(--sand);padding:8px 12px;border-radius:8px;color:var(--deep);font-weight:700}
 @media(max-width:720px){header h1{font-size:24px}.grid{grid-template-columns:1fr}.stat{min-width:100px}}
 </style>
 </head>
@@ -493,7 +494,8 @@ function srcHTML(o){
 function cardHTML(o){
  const tag=esc((o.when.split("；")[0]||"").slice(0,42));
  const site=o.href?`<a href="${esc(o.href)}" target="_blank" rel="noopener">${esc(o.url)}</a>`:esc(o.url);
- return `<div class="card" data-k="${esc((o.n+o.host+o.worth+o.cond+o.when).toLowerCase())}">
+ const key=(o.n+" "+o.host+" "+o.lv+" "+o.cycle).toLowerCase();
+ return `<div class="card" data-k="${esc(key)}">
   <div class="top"><h3>${esc(o.n)}</h3><span class="badge ${esc(o.lvC)}">${esc(o.lv)}</span></div>
   <div class="meta"><b>主办：</b>${esc(o.host)}<br><b>周期：</b>${esc(o.cycle)}</div>
   <div class="tag">⏰ ${tag}</div>
@@ -513,12 +515,23 @@ document.querySelectorAll(".card").forEach(c=>{
  c.addEventListener("click",e=>{if(e.target.closest("a"))return;c.querySelector(".detail").classList.toggle("open");});
 });
 const q=document.getElementById("q");
-q.addEventListener("input",()=>{
+function applySearch(){
  const s=q.value.trim().toLowerCase();
- document.querySelectorAll(".card").forEach(c=>{c.style.display=(!s||c.dataset.k.includes(s))?"":"none";});
- const vis=[...document.querySelectorAll(".card")].filter(c=>c.style.display!=="none").length;
- document.getElementById("count").textContent=s?`匹配 ${vis} 个奖项`:"";
-});
+ document.querySelectorAll(".card").forEach(c=>{
+  const hay=((c.getAttribute("data-k")||"")+" "+(c.textContent||"")).toLowerCase();
+  c.style.display=(!s||hay.includes(s))?"":"none";
+ });
+ document.querySelectorAll(".cathead").forEach(h=>{
+  const grid=h.nextElementSibling;
+  const vis=grid&&[...grid.querySelectorAll(".card")].some(c=>c.style.display!=="none");
+  h.style.display=(!s||vis)?"":"none";
+ });
+ const visn=[...document.querySelectorAll(".card")].filter(c=>c.style.display!=="none").length;
+ document.getElementById("count").textContent=s?`匹配 ${visn} 个奖项`:"";
+}
+q.addEventListener("input",applySearch);
+q.addEventListener("keyup",applySearch);
+q.addEventListener("change",applySearch);
 const TL=[
  ["1月","地理信息奖申报\n测绘奖网上申报开\n专利奖推荐收尾"],
  ["2月","地理信息奖续报\n测绘奖申报"],
